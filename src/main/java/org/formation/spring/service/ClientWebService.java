@@ -12,26 +12,26 @@ import javax.ws.rs.core.Response;
 
 import org.formation.spring.model.Client;
 
-//@Path("/clientservice")
+@Path("/clientservice")
 public interface ClientWebService {
 
-//	@GET
-//	@Path("/clients/{id}/")
-//	Client getClient(@PathParam("id") String id);
-//
-//	@GET
-//	@Path("/clients")
-//	List<Client> getClients();
-//
-//	@PUT
-//	@Path("/clients/")
-//	Response updateClient(Client Client);
-//
-//	@POST
-//	@Path("/clients/")
-//	Response addClient(Client Client);
-//
-//	@DELETE
-//	@Path("/clients/{id}/")
-//	Response deleteClients(@PathParam("id") String id);
+	@GET
+	@Path("/clients/{id}/")
+	Client getClient(@PathParam("id") String id);
+
+	@GET
+	@Path("/clients")
+	List<Client> getClients();
+
+	@PUT
+	@Path("/clients/")
+	Response updateClient(Client Client);
+
+	@POST
+	@Path("/clients/")
+	Response addClient(Client Client);
+
+	@DELETE
+	@Path("/clients/{id}/")
+	Response deleteClients(@PathParam("id") String id);
 }
