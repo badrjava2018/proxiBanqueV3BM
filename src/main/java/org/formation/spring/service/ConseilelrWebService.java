@@ -12,12 +12,11 @@ import javax.ws.rs.core.Response;
 
 import org.formation.spring.model.Conseiller;
 
-
-@Path("conseillerWebService")
+@Path("conseillerservice")
 public interface ConseilelrWebService {
-	
+
 	@GET
-	@Path("/conseillers/{id}/")
+	@Path("/conseiller/{id}/")
 	Conseiller getConseiller(@PathParam("id") String id);
 
 	@GET
@@ -26,11 +25,11 @@ public interface ConseilelrWebService {
 
 	@PUT
 	@Path("/conseillers/")
-	Response updateConseiller(Conseiller Conseiller);
+	Response updateConseiller(Conseiller conseiller);
 
 	@POST
 	@Path("/conseillers/")
-	Response addConseiller(Conseiller Conseiller);
+	Response addConseiller(Conseiller conseiller);
 
 	@DELETE
 	@Path("/conseillers/{id}/")

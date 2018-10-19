@@ -25,11 +25,11 @@ public interface ClientWebService {
 
 	@PUT
 	@Path("/clients/")
-	Response updateClient(Client Client);
+	Response updateClient(Client c);
 
 	@POST
 	@Path("/clients/")
-	Response addClient(Client Client);
+	Response addClient(Client c);
 
 	@DELETE
 	@Path("/clients/{id}/")

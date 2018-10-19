@@ -1,17 +1,15 @@
 package org.formation.spring.model;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement
 @Entity
@@ -24,19 +22,20 @@ public class Conseiller {
 	private String prenom;
 	private String adresse;
 
-	@OneToMany(mappedBy = "conseiller", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@OneToMany(mappedBy = "conseiller", cascade = { CascadeType.ALL })
+	
 	Set<Client> clients = new HashSet<>();
-
-	public Conseiller(String nom, String prenom, String adresse, List<Client> listClient) {
-		super();
-		this.nom = nom;
-		this.prenom = prenom;
-		this.adresse = adresse;
-
-	}
 
 	public Conseiller() {
 		super();
+	}
+
+	public Conseiller(int id, String nom, String prenom, String adresse) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.adresse = adresse;
 	}
 
 	public int getId() {
@@ -71,11 +70,25 @@ public class Conseiller {
 		this.adresse = adresse;
 	}
 
+	public Set<Client> getClients() {
+		return clients;
+	}
+
+	public void setClients(Set<Client> clients) {
+		this.clients = clients;
+	}
+
+	public void addClient(Client c) {
+
+		clients.add(c);
+		c.setConseiller(this);
+
+	}
+
 	@Override
 	public String toString() {
 		return "Conseiller [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", clients="
 				+ clients + "]";
 	}
 
-	
 }
